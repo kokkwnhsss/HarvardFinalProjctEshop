@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Gym Website</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/assets/css/custom.css">
+  <style>
+
+
+    </style>
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+    <div class="container-fluid">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" href="/">Cocco.com</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="SignIn.html">Sign Up</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/login.html?email={{ email }}&password={{ password }}">Login</a>
+        </li>
+        <ul class="navbar-nav ms-auto">
+          <a class="nav-link" href="tel:1234567890">210-26-32-695</a>
+        </ul>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container p-4 mb-4 bg-dark text-white border rounded" id="cool-container">
+    <p class="fs-3 text-primary fw-bold">FREE Shipping with purchases of 69.90€ or more</p>
+  </div>
+
+<script>
+    const coolContainer = document.getElementById("cool-container");
+    coolContainer.addEventListener("mouseover", () => {
+      coolContainer.style.transform = "rotate(3deg)";
+      coolContainer.style.transition = "all 0.3s ease-in-out";
+    });
+    coolContainer.addEventListener("mouseout", () => {
+      coolContainer.style.transform = "rotate(0deg)";
+      coolContainer.style.transition = "all 0.3s ease-in-out";
+    });
+  </script>
+
+  <h1 class="display-4 text-primary text-end">Welcome to Our Site</h1>
+  <p class="lead text-end text-lowercase text-white">We are a gym Company found in 2023 etc.</p>
+
+  <section class="bg-light py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 align-self-center">
+          <h1>Welcome to Gym Eshop</h1>
+          <p class="lead">We offer a wide range of gym equipment and accessories to
+help you achieve your fitness goals. From dumbbells and bench presses to fitness wear and supplements, we have everything you need for a successful workout routine.</p>
+<p>With our high-quality products and competitive prices, you can trust us to provide you with the best gym equipment and accessories. Whether you are a beginner or an experienced fitness enthusiast, our wide selection caters to all levels of fitness.</p>
+<p>At Gym Eshop, we prioritize customer satisfaction and strive to provide excellent customer service. Our knowledgeable staff is available to assist you with any questions or concerns you may have. We also offer free shipping on purchases of 69.90€ or more, making it even easier to shop with us.</p>
+</div>
+
+</div>
+</div>
+</div>
+  </section>
+  <section class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <h3 class="text-primary">Dumbbells</h3>
+          <p>Our dumbbells are made from high-quality materials and come in various weights, making them perfect for strength training exercises. Whether you are a beginner or an advanced lifter, our dumbbells are designed to help you build muscle and tone your body.</p>
+        </div>
+        <div class="col-md-4">
+          <h3 class="text-primary">Bench Press</h3>
+          <p>Our bench presses are sturdy and durable, providing a stable platform for a wide range of upper body exercises. With adjustable settings, you can customize your bench press workout to suit your needs and fitness level. From flat bench presses to incline and decline bench presses, we have the right bench for your home gym.</p>
+        </div>
+        <div class="col-md-4">
+          <h3 class="text-primary">Fitness Wear</h3>
+          <p>Our fitness wear collection includes comfortable and stylish workout clothes for both men and women. From gym leggings and shorts to workout tops and sports bras, our fitness wear is designed to provide maximum comfort and freedom of movement during your workouts. With a variety of sizes and styles available, you can find the perfect fitness wear to suit your personal style and fitness goals.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="bg-primary text-white py-5">
+    <div class="container text-center">
+      <h2 class="display-4">Sign up for a Gym Eshop account today!</h2>
+      <p class="lead">Join our community of fitness enthusiasts and enjoy exclusive benefits such as special discounts, early access to new products, and personalized workout plans. Sign up now and take your fitness journey to the next level!</p>
+      <a href="SignIn.html" class="btn btn-lg btn-light">Sign Up</a>
+
+
+
+
+
+
+
+  </section>
+
+   </div>
+  <div class="table-responsive">
+  <table class="table table-vertical">
+    <thead class="d-flex flex-column">
+      <tr>
+        <th scope="col">Product Code</th>
+        <th scope="col">Product Description</th>
+        <th scope="col">Image</th>
+      </tr>
+    </thead>
+    <tbody class="d-flex flex-column">
+      {% for row in products %}
+        <tr>
+          <td>{{ row[0] }}</td>
+          <td>{{ row[1] }}</td>
+          <td>  <img src="{{ url_for('static', filename='/' + row[2]) }}"  height="100" width="100">    </td>
+          <td>
+            <form method="POST" action="/theo.html">
+              <input type="hidden" name="row_data" value="{{ row[0] }}">
+              <button type="submit" class="btn btn-dark">Select</button>
+            </form>
+          </td>
+          <td>
+            <form method="POST" action="/BAG.html">
+              <input type="hidden" name="row_data" value="{{ row[0] }}">
+              <button type="submit" class="btn btn-dark">Add to Bag</button>
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+  <footer class="bg-dark text-white text-center py-3">
+    <p>&copy; 2023 Gym Eshop. All rights reserved. | Designed by YourCompany</p>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
